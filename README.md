@@ -1,7 +1,7 @@
 Admob Unity Plugin
 ==============================
 
-Admob Unity Plugin provides a way to integrate admob ads in Unity Game and u3d app.
+Admob Unity Plugin provides a way to integrate admob ads in Unity3D Game and u3d app.
 You can use it for Unity iOS and Android App with the same c# or js code.
 Unity Admob Plugin features include:
 
@@ -22,7 +22,7 @@ Build base on
 Admob iOS SDK 7.6 ,android google play service 8
 
 
-Integrate the Admob Unity Plugin into your Unity Game
+Integrate the Admob Unity3D Plugin into your Unity Game
 -----------------------------------
 
 1. Open your project in the Unity editor.
@@ -51,30 +51,31 @@ XCode project. You'll need to do the following before you can run it:
 2. Navigate to and select **GoogleMobileAds.framework**.
 3. Add the following framework to xcode project
 
-	AdSupport.framework,EventKit.framework,EventKitUI.framework,CoreTelephony.framework,StoreKit.framework,MessageUI.framework
+    AdSupport.framework,EventKit.framework,EventKitUI.framework,CoreTelephony.framework,StoreKit.framework,MessageUI.framework
 
 
 Running the Unity Admob Plugin demo code 
 ===========================
-1.copy admobdemo.cs from AdmobPluginRes to your unity project/assets dic
-2.attach admobdemo.cs to the main camera
-3.set the admob id  in admobdemo.cs
-4.build and run this in your device
 
-Integrate Google admob into Unity3d 
+1. copy admobdemo.cs from AdmobPluginRes to your unity project/assets dic
+2. attach admobdemo.cs to the main camera
+3. set the admob id  in admobdemo.cs
+4. build and run this in your device
+
+Integrate Google admob into Unity3d tutorial
 ===========================
 
 The remainder of this guide assumes you are now attempting to write your own
 code to integrate Google Mobile Ads into your game.
 
-Add Admob Banner in Unity App
+Add Admob Banner in Unity App 
 -----------------
 Here is the minimal code needed to create a banner.
 
     using admob;
     ...
-   Admob.Instance().initAdmob("admob banner id", "admob interstitial id");//admob id with format ca-app-pub-2796046890663330/756767388
-   Admob.Instance().showBannerRelative(AdSize.Banner, AdPosition.BOTTOM_CENTER, 0);
+    Admob.Instance().initAdmob("admob banner id", "admob interstitial id");//admob id with format ca-app-pub-2796046890663330/756767388
+    Admob.Instance().showBannerRelative(AdSize.Banner, AdPosition.BOTTOM_CENTER, 0);
 
 The AdPosition class specifies where to place the banner. AdSize specifies witch size banner to show
 
@@ -85,8 +86,8 @@ Here is the minimal banner code to create an interstitial.
 
     using admob;
     ...
-   Admob.Instance().initAdmob("admob banner id", "admob interstitial id");//initAdmob just need call once,if you called when create banner ,you not need call any more
-   Admob.Instance().loadInterstitial(); 
+    Admob.Instance().initAdmob("admob banner id", "admob interstitial id");//initAdmob just need call once,if you called when create banner ,you not need call any more
+    Admob.Instance().loadInterstitial(); 
 
 Unlike banners, interstitials need to be explicitly shown. At an appropriate
 stopping point in your app, check that the interstitail is ready before
@@ -102,8 +103,7 @@ In addition to constants on _AdSize_, you can also create a custom size:
 
     using admob;
     ...
-
-    // Create a 250x250 banner.
+    //Create a 250x250 banner.
     AdSize adSize = new AdSize(250, 250);
     Admob.Instance().showBannerAbsolute(adSize,0,30);
 
@@ -125,13 +125,10 @@ Admob test Ads and children app
 --------------------
 If you want to test the ads or the your app with children target,you can set with admob unity plugin easy
 
-
     using admob;
     ...
-
     Admob.Instance().setTesting(true);
     Admob.Instance().setForChildren(true);
-
 
 Ad Events
 ---------
@@ -141,7 +138,6 @@ Here we'll demonstrate setting ad events on a interstitial,and show interstitial
 
     using admob;
     ...
-
     Admob.Instance().interstitialEventHandler += onInterstitialEvent;
     ...
     void onInterstitialEvent(string eventName, string msg)
@@ -164,5 +160,5 @@ By default, banners are visible. To temporarily hide a banner, call:
 Additional Resources
 ====================
 * [Admob](https://apps.admob.com/)
-* [Admob Unity Plugin Home](https://groups.google.com/group/google-admob-ads-sdk)
+* [Admob Unity Plugin Home](https://github.com/unity-plugins/Unity-Admob)
 
