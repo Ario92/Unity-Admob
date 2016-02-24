@@ -37,9 +37,9 @@ Ad Types:
 
 
 ## Downloads Admob Unity Plugin
-AdmobPluginRes/GoogleMobileAds.framework and admob_unity_plugin.unitypackage is reqired
-Download those files from Admob Unity3d Plugin Project Home https://github.com/unity-plugins/Unity-Admob
-or Download all the Unity admob plugin project https://github.com/unity-plugins/Unity-Admob/archive/master.zip
+AdmobPluginRes/GoogleMobileAds.framework and admob_unity_plugin.unitypackage is reqired <br/>
+Download those files from Admob Unity3d Plugin Project Home https://github.com/unity-plugins/Unity-Admob <br/>
+or Download all the Unity admob plugin project https://github.com/unity-plugins/Unity-Admob/archive/master.zip<br/>
 
 ## Installation Admob Unity
 1. Open your project in the Unity editor.
@@ -102,7 +102,7 @@ If you want to test the ads or the your app with children target,you can set wit
     Admob.Instance().setTesting(true);
     Admob.Instance().setForChildren(true);
 ```
-### 6.Ad Events
+#### 6.Ad Events
 Both _Banner_ and _Interstitial_ contain the same ad events that you can
 register for. 
 Here we'll demonstrate setting ad events on a interstitial,and show interstitial when load success:
@@ -133,8 +133,8 @@ You only need to register for the events you care about.
     AdSupport.framework,EventKit.framework,EventKitUI.framework,CoreTelephony.framework,StoreKit.framework,MessageUI.framework
 
 ## Screenshots
-[ScreenShot](https://github.com/unity-plugins/Unity-Admob/blob/master/doc/android_banner.jpg?raw=true) 
-[ScreenShot](https://github.com/unity-plugins/Unity-Admob/blob/master/doc/android_full.jpg?raw=true) 
+[ScreenShot](https://github.com/unity-plugins/Unity-Admob/blob/master/doc/android_banner.jpg) 
+[ScreenShot](https://github.com/unity-plugins/Unity-Admob/blob/master/doc/android_full.jpg) 
 
 ## License
 [Apache 2.0 License](http://www.apache.org/licenses/LICENSE-2.0.html)
