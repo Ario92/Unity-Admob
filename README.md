@@ -54,29 +54,31 @@ or Download all the Unity admob plugin project https://github.com/unity-plugins/
 * [Tutorial](https://github.com/unity-plugins/Unity-Admob/wiki/How-to-Use-Admob-Plugin-for-Unity)
 
 ## Quick Start
-#### 1.Add Admob Banner in Unity App 
-Here is the minimal code needed to create a banner.
+#### 1.Init Admob Unity Plugin after install admob unity plugin
 ```
     using admob;
     Admob.Instance().initAdmob("admob banner id", "admob interstitial id");//admob id with format ca-app-pub-27960468906xxx/xxxx67388
+
+```
+#### 2.Add Admob Banner in Unity App 
+Here is the minimal code needed to show admob banner.
+```
     Admob.Instance().showBannerRelative(AdSize.Banner, AdPosition.BOTTOM_CENTER, 0);
 
 ```
 
 The AdPosition class specifies where to place the banner. AdSize specifies witch size banner to show
 
-#### 2.Remove Banner 
+#### 3.Remove Banner 
 By default, banners are visible. To temporarily hide a banner, call:
 ```
     Admob.Instance().removeBanner();
 ```
 
-#### 3.How to integrate Interstitial into Unity 3d app?
+#### 4.How to integrate Interstitial into Unity 3d app?
 
 Here is the minimal banner code to create an interstitial.
 ```
-    using admob;
-    Admob.Instance().initAdmob("admob banner id", "admob interstitial id");//initAdmob just need call once,if you called when create banner ,you not need call any more
     Admob.Instance().loadInterstitial(); 
 ```
 Unlike banners, interstitials need to be explicitly shown. At an appropriate
@@ -87,27 +89,24 @@ showing it:
       Admob.Instance().showInterstitial();
     }
 ```
-#### 4.Custom Admob Banner Ad Sizes
+#### 5.Custom Admob Banner Ad Sizes
 In addition to constants on _AdSize_, you can also create a custom size:
 ```
-    using admob;
     //Create a 250x250 banner.
     AdSize adSize = new AdSize(250, 250);
     Admob.Instance().showBannerAbsolute(adSize,0,30);
 ```
-#### 5.Admob test Ads and children app
+#### 6.Admob test Ads and children app
 If you want to test the ads or the your app with children target,you can set with admob unity plugin easy
 ```
-    using admob;
     Admob.Instance().setTesting(true);
     Admob.Instance().setForChildren(true);
 ```
-#### 6.Ad Events
+#### 7.Ad Events
 Both _Banner_ and _Interstitial_ contain the same ad events that you can
 register for. 
 Here we'll demonstrate setting ad events on a interstitial,and show interstitial when load success:
 ```
-    using admob;
     Admob.Instance().interstitialEventHandler += onInterstitialEvent;
     void onInterstitialEvent(string eventName, string msg)
     {
