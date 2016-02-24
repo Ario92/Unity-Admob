@@ -6,16 +6,16 @@ You can use it for Unity iOS and Android App with the same c# or js code.
 
 ## Admob Unity3d Plugin Readme Contents
 
-1. [Admob Unity Plugin Description](#Admob-Unity-Plugin-Description)
-2. [Unity Admob Plugin Features](#Unity-Admob-Plugin-Features)
-3. [Downloads Admob Unity Plugin](#Downloads-Admob-Unity-Plugin)
-4. [Installation Admob Unity](#Installation-Admob-Unity)
-5. [Unity Plugin Wiki and Documentation](#Unity-Plugin-Wiki-and-Documentation)
+1. [Admob Unity Plugin Description](#admob-unity-plugin-description)
+2. [Unity Admob Plugin Features](#unity-admob-plugin-features)
+3. [Downloads Admob Unity Plugin](#downloads-admob-unity-plugin)
+4. [Installation Admob Unity](#installation-admob-unity)
+5. [Unity Plugin Wiki and Documentation](#unity-plugin-wiki-and-documentation)
 6. [Quick Start](#quick-start)
-7. [Unity Admob Demo Usage](#Unity-Admob-Demo-Usage)
-8. [Important Tips](#Important Tips)
+7. [Unity Admob Demo Usage](#unity-admob-demo-usage)
+8. [Important Tips](#important-tips)
 9. [Screenshots](#screenshots)
-10. [License](#License)
+10. [License](#license)
 
 ## Admob Unity Plugin Description
 The Google Mobile Ads SDK is the latest generation in Google mobile advertising featuring refined ad formats and streamlined APIs for access to mobile ad networks and advertising solutions. The SDK enables Unity mobile app developers to maximize their monetization in native mobile apps.
@@ -54,7 +54,8 @@ or Download all the Unity admob plugin project https://github.com/unity-plugins/
 * [Tutorial](https://github.com/unity-plugins/Unity-Admob/wiki/How-to-Use-Admob-Plugin-for-Unity)
 
 ## Quick Start
-#### 1.Init Admob Unity Plugin after install admob unity plugin
+#### 1.Init Admob Unity Plugin 
+Create A C# script ,drag the script to a object on scene , add the follow code in the script file
 ```
     using admob;
     Admob.Instance().initAdmob("admob banner id", "admob interstitial id");//admob id with format ca-app-pub-27960468906xxx/xxxx67388
@@ -129,8 +130,9 @@ You only need to register for the events you care about.
 ## Important Tips
 1. Add **GoogleMobileAds.framework**. to Xcode Project
 2. Add the following framework to Xcode project
+```
     AdSupport.framework,EventKit.framework,EventKitUI.framework,CoreTelephony.framework,StoreKit.framework,MessageUI.framework
-
+```
 ## Screenshots
 ![ScreenShot](https://raw.githubusercontent.com/unity-plugins/Unity-Admob/master/doc/android_banner.jpg) 
 ![ScreenShot](https://raw.githubusercontent.com/unity-plugins/Unity-Admob/master/doc/android_full.jpg) 
