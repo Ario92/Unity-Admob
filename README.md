@@ -54,7 +54,7 @@ or Download all the Unity admob plugin project https://github.com/unity-plugins/
 * [Tutorial](https://github.com/unity-plugins/Unity-Admob/wiki/How-to-Use-Admob-Plugin-for-Unity)
 
 ## Quick Start
-### 1.Add Admob Banner in Unity App 
+#### 1.Add Admob Banner in Unity App 
 Here is the minimal code needed to create a banner.
 ```
     using admob;
@@ -65,13 +65,13 @@ Here is the minimal code needed to create a banner.
 
 The AdPosition class specifies where to place the banner. AdSize specifies witch size banner to show
 
-### 2.Remove Banner 
+#### 2.Remove Banner 
 By default, banners are visible. To temporarily hide a banner, call:
 ```
     Admob.Instance().removeBanner();
 ```
 
-### 3.How to integrate Interstitial into Unity 3d app?
+#### 3.How to integrate Interstitial into Unity 3d app?
 
 Here is the minimal banner code to create an interstitial.
 ```
@@ -87,7 +87,7 @@ showing it:
       Admob.Instance().showInterstitial();
     }
 ```
-### 4.Custom Admob Banner Ad Sizes
+#### 4.Custom Admob Banner Ad Sizes
 In addition to constants on _AdSize_, you can also create a custom size:
 ```
     using admob;
@@ -95,7 +95,7 @@ In addition to constants on _AdSize_, you can also create a custom size:
     AdSize adSize = new AdSize(250, 250);
     Admob.Instance().showBannerAbsolute(adSize,0,30);
 ```
-### 5.Admob test Ads and children app
+#### 5.Admob test Ads and children app
 If you want to test the ads or the your app with children target,you can set with admob unity plugin easy
 ```
     using admob;
@@ -133,8 +133,8 @@ You only need to register for the events you care about.
     AdSupport.framework,EventKit.framework,EventKitUI.framework,CoreTelephony.framework,StoreKit.framework,MessageUI.framework
 
 ## Screenshots
-[ScreenShot](https://github.com/unity-plugins/Unity-Admob/blob/master/doc/android_banner.jpg) 
-[ScreenShot](https://github.com/unity-plugins/Unity-Admob/blob/master/doc/android_full.jpg) 
+[ScreenShot](https://raw.githubusercontent.com/unity-plugins/Unity-Admob/master/doc/android_banner.jpg) 
+[ScreenShot](https://raw.githubusercontent.com/unity-plugins/Unity-Admob/master/doc/android_full.jpg) 
 
 ## License
 [Apache 2.0 License](http://www.apache.org/licenses/LICENSE-2.0.html)
