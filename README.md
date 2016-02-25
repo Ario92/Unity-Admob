@@ -49,7 +49,7 @@ or Download all the Unity admob plugin project https://github.com/unity-plugins/
    to check for any conflicts with files.
 
 ## Unity Plugin Wiki and Documentation
-* [Document](https://github.com/unity-plugins/Unity-Admob/wiki/Admob-Unity-Plugin-Document)
+* [Document](https://github.com/unity-plugins/Unity-Admob/wiki)
 * [API](https://github.com/unity-plugins/Unity-Admob/wiki/Admob-Unity-Plugin-API)
 * [Tutorial](https://github.com/unity-plugins/Unity-Admob/wiki/How-to-Use-Admob-Plugin-for-Unity)
 
