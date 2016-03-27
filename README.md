@@ -34,6 +34,7 @@ Platforms supported in one plugin :
 Ad Types:
 - [x] Banner(All Banner Type and Custom banner sizes)
 - [x] Interstitial (text, picture, video)
+- [x] Rewarded Video 
 
 
 ## Downloads Admob Unity Plugin
@@ -49,7 +50,7 @@ or Download all the Unity admob plugin project https://github.com/unity-plugins/
    to check for any conflicts with files.
 
 ## Unity Plugin Wiki and Documentation
-* [Document](https://github.com/unity-plugins/Unity-Admob/wiki)
+* [Document](https://github.com/unity-plugins/Unity-Admob/wiki/Admob-Unity-Plugin-Document)
 * [API](https://github.com/unity-plugins/Unity-Admob/wiki/Admob-Unity-Plugin-API)
 * [Tutorial](https://github.com/unity-plugins/Unity-Admob/wiki/How-to-Use-Admob-Plugin-for-Unity)
 
@@ -58,7 +59,7 @@ or Download all the Unity admob plugin project https://github.com/unity-plugins/
 Create A C# script ,drag the script to a object on scene , add the follow code in the script file
 ```
     using admob;
-    Admob.Instance().initAdmob("admob banner id", "admob interstitial id");//admob id with format ca-app-pub-27960468906xxx/xxxx67388
+    Admob.Instance().initAdmob("admob banner id", "admob interstitial id");//admob id with format ca-app-pub-279xxxxxxxx/xxxxxxxx
 
 ```
 #### 2.Add Admob Banner in Unity App 
@@ -78,7 +79,7 @@ By default, banners are visible. To temporarily hide a banner, call:
 
 #### 4.How to integrate Interstitial into Unity 3d app?
 
-Here is the minimal banner code to create an interstitial.
+Here is the minimal  code to create an interstitial.
 ```
     Admob.Instance().loadInterstitial(); 
 ```
@@ -119,6 +120,21 @@ Here we'll demonstrate setting ad events on a interstitial,and show interstitial
     }
 ```
 You only need to register for the events you care about.
+
+#### 8.How to integrate Admob Rewarded Video to Unity3d app?
+
+Here is the minimal  code to create an admob video.
+```
+    Admob.Instance().loadRewardedVideo("ca-app-pub-312xxxxxxxxxxxx/xxxxxxxx"); 
+```
+Simular with interstitial,video need to be explicitly shown at an appropriate
+stopping point in your app, check that the video is ready before
+showing it:
+```
+    if (Admob.Instance().isRewardedVideoReady()) {
+      Admob.Instance().showRewardedVideo();
+    }
+```
 
 ## Unity Admob Demo Usage
 1. import AdmobUnityPlugin.unitypackage to your Unity project

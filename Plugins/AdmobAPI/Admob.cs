@@ -8,6 +8,7 @@ namespace admob
 
         public event AdmobEventHandler bannerEventHandler;
         public event AdmobEventHandler interstitialEventHandler;
+        public event AdmobEventHandler rewardedVideoEventHandler;
 
 		private static Admob _instance;	
 		private AndroidJavaObject jadmob;
@@ -77,6 +78,26 @@ namespace admob
             _kmshowInterstitial();
         }
 
+         [DllImport("__Internal")]
+        private static extern void _kmloadRewardedVideo(string rewardedVideoID);
+        public void loadRewardedVideo(string rewardedVideoID)
+        {
+            _kmloadRewardedVideo(rewardedVideoID);
+        }
+
+        [DllImport("__Internal")]
+        private static extern bool _kmisRewardedVideoReady();
+        public bool isRewardedVideoReady()
+        {
+            return _kmisRewardedVideoReady();
+        }
+
+        [DllImport("__Internal")]
+        private static extern void _kmshowRewardedVideo();
+        public void showRewardedVideo()
+        {
+            _kmshowRewardedVideo();
+        }
 
         [DllImport("__Internal")]
         private static extern void _kmsetTesting(bool v);
@@ -101,9 +122,13 @@ namespace admob
             {
                 Admob.Instance().bannerEventHandler(eventName, msg);
             }
-            if (adtype == "interstitial")
+            else if (adtype == "interstitial")
             {
                 Admob.Instance().interstitialEventHandler(eventName, msg);
+            }
+            else if (adtype == "rewardedVideo")
+            {
+                Admob.Instance().rewardedVideoEventHandler(eventName, msg);
             }
         }
         
@@ -149,6 +174,24 @@ namespace admob
         {
             jadmob.Call("showInterstitial");
         }
+
+
+        public void loadRewardedVideo(string rewardedVideoID)
+        {
+            jadmob.Call("loadRewardedVideo", new object[] { rewardedVideoID });
+        }
+        public bool isRewardedVideoReady()
+        {
+            bool isReady = jadmob.Call<bool>("isRewardedVideoReady");
+            return isReady;
+        }
+        public void showRewardedVideo()
+        {
+            jadmob.Call("showRewardedVideo");
+        }
+
+
+
         public void setTesting(bool value)
         {
             jadmob.Call("setTesting",value);
@@ -169,6 +212,10 @@ namespace admob
                 else if (adtype == "interstitial")
                 {
                     admobInstance.interstitialEventHandler(eventName, paramString);
+                }
+                else if (adtype == "rewardedVideo")
+                {
+                    admobInstance.rewardedVideoEventHandler(eventName, paramString);
                 }
             }
         }
@@ -220,7 +267,19 @@ namespace admob
             Debug.Log("calling showInterstitial");
         }
 
-
+        public void loadRewardedVideo(string rewardedVideoID)
+        {
+            Debug.Log("calling loadRewardedVideo");
+        }
+        public bool isRewardedVideoReady()
+        {
+            Debug.Log("calling isRewardedVideoReady");
+            return false;
+        }
+        public void showRewardedVideo()
+        {
+            Debug.Log("calling showRewardedVideo");
+        }
         
         public void setTesting(bool v)
         {

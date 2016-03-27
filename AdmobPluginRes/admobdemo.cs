@@ -7,6 +7,8 @@ public class admobdemo : MonoBehaviour {
 	void Start () {
         Admob.Instance().bannerEventHandler += onBannerEvent;
         Admob.Instance().interstitialEventHandler += onInterstitialEvent;
+        Admob.Instance().rewardedVideoEventHandler += onRewardedVideoEvent;
+        
 	}
 	
 	// Update is called once per frame
@@ -16,14 +18,12 @@ public class admobdemo : MonoBehaviour {
 	void OnGUI(){
 		if (GUI.Button (new Rect (0, 0, 100, 60), "initadmob")) {
             Admob ad = Admob.Instance();
-             #if UNITY_IOS
-            ad.initAdmob("ca-app-pub-27960454450664210/xxxxxxxxx", "ca-app-pub-279343530664210/xxxxxxxxxxx");
-            #else 
-            ad.initAdmob("ca-app-pub-27960454450664210/xxxxxxxxx", "ca-app-pub-279343530664210/xxxxxxxxxxx");
-            #endif
+          
+            ad.initAdmob("ca-app-pub-xxxxxxxxxxxxxxxx/xxxxxxxxxx", "ca-app-pub-xxxxxxxxxxxxxxx/xxxxxxxx");
+          
          //   ad.setTesting(true);
 		}
-        if (GUI.Button(new Rect(120, 0, 100, 60), "showfull"))
+        if (GUI.Button(new Rect(120, 0, 100, 60), "showInterstitial"))
         {
             Admob ad = Admob.Instance();
             if (ad.isInterstitialReady())
@@ -33,6 +33,18 @@ public class admobdemo : MonoBehaviour {
             else
             {
                 ad.loadInterstitial();
+            }
+        }
+        if (GUI.Button(new Rect(240, 0, 100, 60), "showRewardVideo"))
+        {
+            Admob ad = Admob.Instance();
+            if (ad.isRewardedVideoReady())
+            {
+                ad.showRewardedVideo();
+            }
+            else
+            {
+                ad.loadRewardedVideo("ca-app-pub-xxxxxxxxxxxxxxxxxx/xxxxxxxxxx");
             }
         }
         if (GUI.Button(new Rect(240, 100, 100, 60), "showbanner"))
@@ -59,5 +71,9 @@ public class admobdemo : MonoBehaviour {
     void onBannerEvent(string eventName, string msg)
     {
         Debug.Log("handler onAdmobBannerEvent---" + eventName + "   " + msg);
+    }
+    void onRewardedVideoEvent(string eventName, string msg)
+    {
+        Debug.Log("handler onRewardedVideoEvent---" + eventName + "   " + msg);
     }
 }

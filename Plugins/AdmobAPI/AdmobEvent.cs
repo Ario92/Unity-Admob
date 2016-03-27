@@ -9,5 +9,7 @@ namespace admob
         public static readonly string adViewWillDismissScreen = "adViewWillDismissScreen";
         public static readonly string onAdClosed = "onAdClosed";
         public static readonly string onAdLeftApplication = "onAdLeftApplication";
+        public static readonly string onRewardedVideoStarted = "onRewardedVideoStarted";
+        public static readonly string onRewarded = "onRewarded";
     }
 }
