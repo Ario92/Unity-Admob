@@ -11,7 +11,7 @@ namespace admob
         public event AdmobEventHandler rewardedVideoEventHandler;
 
 		private static Admob _instance;	
-		private AndroidJavaObject jadmob;
+	
 		public static Admob Instance()
 	    {
 	        if(_instance == null)
@@ -133,6 +133,7 @@ namespace admob
         }
         
 #elif UNITY_ANDROID
+	private AndroidJavaObject jadmob;
          private void preInitAdmob(){
 			if (jadmob == null) {
                 AndroidJavaClass admobUnityPluginClass = new AndroidJavaClass("com.admob.plugin.AdmobUnityPlugin");

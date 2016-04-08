@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿#if UNITY_ANDROID
+using UnityEngine;
 using System.Collections;
 namespace admob
 {
@@ -17,3 +18,4 @@ namespace admob
 		}
 	}
 }
+#endif
