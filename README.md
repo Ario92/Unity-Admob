@@ -155,3 +155,8 @@ showing it:
 
 ## License
 [Apache 2.0 License](http://www.apache.org/licenses/LICENSE-2.0.html)
+
+
+## Change Log
+1.add icon settings to fix https://github.com/unity-plugins/Unity-Admob/issues/5
+2.add unity ads video sdk for easy to use
