@@ -120,14 +120,17 @@ namespace admob
          //   Debug.Log("c# receive callback " + adtype + "  " + eventName + "  " + msg);
             if (adtype == "banner")
             {
+            	if(Admob.Instance().bannerEventHandler!=null)
                 Admob.Instance().bannerEventHandler(eventName, msg);
             }
             else if (adtype == "interstitial")
             {
+            	if(Admob.Instance().interstitialEventHandler!=null)
                 Admob.Instance().interstitialEventHandler(eventName, msg);
             }
             else if (adtype == "rewardedVideo")
             {
+            	if(Admob.Instance().rewardedVideoEventHandler!=null)
                 Admob.Instance().rewardedVideoEventHandler(eventName, msg);
             }
         }
@@ -208,14 +211,17 @@ namespace admob
             {
                 if (adtype == "banner")
                 {
+                	if(admobInstance.bannerEventHandler!=null)
                     admobInstance.bannerEventHandler(eventName, paramString);
                 }
                 else if (adtype == "interstitial")
                 {
+                	if(admobInstance.interstitialEventHandler!=null)
                     admobInstance.interstitialEventHandler(eventName, paramString);
                 }
                 else if (adtype == "rewardedVideo")
                 {
+                	if(admobInstance.rewardedVideoEventHandler!=null)
                     admobInstance.rewardedVideoEventHandler(eventName, paramString);
                 }
             }

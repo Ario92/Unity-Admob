@@ -11,6 +11,7 @@ namespace admob
 			this.listener = listener;
 		}
          void onAdmobEvent(string adtype,string eventName,string paramString){
+         	 if(listener!=null)
          	 listener.onAdmobEvent(adtype,eventName,paramString);
          }
 		string toString(){
