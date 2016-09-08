@@ -21,9 +21,80 @@ namespace admob
 	        }
 	        return _instance;
 	    }
+	    
+        #if UNITY_EDITOR
+       private void preInitAdmob()
+        {
+           
+        }
         
-       
-        #if UNITY_IOS
+        public void initAdmob(string bannerID, string fullID)
+        {
+            Debug.Log("calling initAdmob");
+        }
+
+        
+        public void showBannerAbsolute(AdSize size, int x, int y)
+        {
+            Debug.Log("calling showBannerAbsolute");
+        }
+
+        
+        public void showBannerRelative(AdSize size, int position, int marginY)
+        {
+            Debug.Log("calling showBannerRelative");
+        }
+
+        
+        public void removeBanner()
+        {
+            Debug.Log("calling removeBanner");
+        }
+
+        
+        public void loadInterstitial()
+        {
+            Debug.Log("calling loadInterstitial");
+        }
+
+        
+        public bool isInterstitialReady()
+        {
+            Debug.Log("calling isInterstitialReady");
+        return false;
+        }
+
+        
+        public void showInterstitial()
+        {
+            Debug.Log("calling showInterstitial");
+        }
+
+        public void loadRewardedVideo(string rewardedVideoID)
+        {
+            Debug.Log("calling loadRewardedVideo");
+        }
+        public bool isRewardedVideoReady()
+        {
+            Debug.Log("calling isRewardedVideoReady");
+            return false;
+        }
+        public void showRewardedVideo()
+        {
+            Debug.Log("calling showRewardedVideo");
+        }
+        
+        public void setTesting(bool v)
+        {
+            Debug.Log("calling setTesting");
+        }
+
+        
+        public void setForChildren(bool v)
+        {
+            Debug.Log("calling setForChildren");
+        }
+        #elif UNITY_IOS
         internal delegate void AdmobAdCallBack(string adtype, string eventName, string msg);
         private void preInitAdmob()
         {
