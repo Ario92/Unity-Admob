@@ -3,7 +3,7 @@ Admob Unity Plugin
 
 Admob Unity Plugin provides a way to integrate admob ads in Unity3D Game and u3d app.
 You can use it for Unity iOS and Android App with the same c# or js code.    
-[Admob Plugin 2 Support Native Ad Based On Firebase](https://github.com/unity-plugins/Firebase-Admob-Unity/)
+
 
 ## Admob Unity3d Plugin Readme Contents
 
@@ -159,5 +159,8 @@ showing it:
 
 
 ## Change Log
-1.add icon settings to fix https://github.com/unity-plugins/Unity-Admob/issues/5
+1.add icon settings to fix https://github.com/unity-plugins/Unity-Admob/issues/5    
 2.add unity ads video sdk for easy to use
+
+## Firebase Admob Unity Plugin
+[Firebase Admob Plugin Support Native Ad Based On Firebase](https://github.com/unity-plugins/Firebase-Admob-Unity/)
