@@ -137,6 +137,15 @@ showing it:
     }
 ```
 
+
+#### 9.Show Admob Native Express Ad in IOS and Android App 
+Here is the minimal code needed to show admob banner.
+```
+    Admob.Instance().showNativeBannerRelative(new AdSize(360,100), AdPosition.BOTTOM_CENTER, 0,"ca-app-pub-3940256099942544/2562852117");
+
+```
+
+
 ## Unity Admob Demo Usage
 1. import AdmobUnityPlugin.unitypackage to your Unity project
 2. copy admobdemo.cs from AdmobPluginRes to your unity project/assets dic

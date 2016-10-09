@@ -5,27 +5,34 @@ public class admobdemo : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        Admob.Instance().bannerEventHandler += onBannerEvent;
-        Admob.Instance().interstitialEventHandler += onInterstitialEvent;
-        Admob.Instance().rewardedVideoEventHandler += onRewardedVideoEvent;
-        
+        Debug.Log("start unity demo-------------");
+         initAdmob();
 	}
 	
 	// Update is called once per frame
 	void Update () {
 	
 	}
+    Admob ad;
+    //bool isAdmobInited = false;
+    void initAdmob()
+    {
+        
+          //  isAdmobInited = true;
+             ad = Admob.Instance();
+            ad.bannerEventHandler += onBannerEvent;
+            ad.interstitialEventHandler += onInterstitialEvent;
+            ad.rewardedVideoEventHandler += onRewardedVideoEvent;
+            ad.nativeBannerEventHandler += onNativeBannerEvent;
+            ad.initAdmob("ca-app-pub-3940256099942544/2934735716", "ca-app-pub-3940256099942544/4411468910");
+            //   ad.setTesting(true);
+            Debug.Log("admob inited -------------");
+        
+    }
 	void OnGUI(){
-		if (GUI.Button (new Rect (0, 0, 100, 60), "initadmob")) {
-            Admob ad = Admob.Instance();
-          
-            ad.initAdmob("ca-app-pub-xxxxxxxxxxxxxxxx/xxxxxxxxxx", "ca-app-pub-xxxxxxxxxxxxxxx/xxxxxxxx");
-          
-         //   ad.setTesting(true);
-		}
         if (GUI.Button(new Rect(120, 0, 100, 60), "showInterstitial"))
         {
-            Admob ad = Admob.Instance();
+          
             if (ad.isInterstitialReady())
             {
                 ad.showInterstitial();
@@ -37,27 +44,42 @@ public class admobdemo : MonoBehaviour {
         }
         if (GUI.Button(new Rect(240, 0, 100, 60), "showRewardVideo"))
         {
-            Admob ad = Admob.Instance();
+            
             if (ad.isRewardedVideoReady())
             {
                 ad.showRewardedVideo();
             }
             else
             {
-                ad.loadRewardedVideo("ca-app-pub-xxxxxxxxxxxxxxxxxx/xxxxxxxxxx");
+                ad.loadRewardedVideo("ca-app-pub-3940256099942544/xxxxxxxxxxxx");
             }
         }
-        if (GUI.Button(new Rect(240, 100, 100, 60), "showbanner"))
+        if (GUI.Button(new Rect(0, 100, 100, 60), "showbanner"))
         {
             Admob.Instance().showBannerRelative(AdSize.Banner, AdPosition.BOTTOM_CENTER, 0);
         }
-        if (GUI.Button(new Rect(240, 200, 100, 60), "showbannerABS"))
+        if (GUI.Button(new Rect(120, 100, 100, 60), "showbannerABS"))
         {
-            Admob.Instance().showBannerAbsolute(AdSize.Banner, 0, 30);
+            Admob.Instance().showBannerAbsolute(AdSize.Banner, 0, 300);
         }
-        if (GUI.Button(new Rect(240, 300, 100, 60), "hidebanner"))
+        if (GUI.Button(new Rect(240, 100, 100, 60), "removebanner"))
         {
             Admob.Instance().removeBanner();
+        }
+       
+        string nativeBannerID = "ca-app-pub-3940256099942544/2562852117";//google
+        if (GUI.Button(new Rect(0, 200, 100, 60), "showNative"))
+        {
+            
+            Admob.Instance().showNativeBannerRelative(new AdSize(320,120), AdPosition.BOTTOM_CENTER, 0,nativeBannerID);
+        }
+        if (GUI.Button(new Rect(120, 200, 100, 60), "showNativeABS"))
+        {
+            Admob.Instance().showNativeBannerAbsolute(new AdSize(320,120), 0, 300, nativeBannerID);
+        }
+        if (GUI.Button(new Rect(240, 200, 100, 60), "removeNative"))
+        {
+            Admob.Instance().removeNativeBanner();
         }
 	}
     void onInterstitialEvent(string eventName, string msg)
@@ -75,5 +97,9 @@ public class admobdemo : MonoBehaviour {
     void onRewardedVideoEvent(string eventName, string msg)
     {
         Debug.Log("handler onRewardedVideoEvent---" + eventName + "   " + msg);
+    }
+    void onNativeBannerEvent(string eventName, string msg)
+    {
+        Debug.Log("handler onAdmobNativeBannerEvent---" + eventName + "   " + msg);
     }
 }

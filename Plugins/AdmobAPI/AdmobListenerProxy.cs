@@ -11,7 +11,8 @@ namespace admob
 			this.listener = listener;
 		}
          void onAdmobEvent(string adtype,string eventName,string paramString){
-         	 if(listener!=null)
+           //  Debug.Log("c# admoblisterproxy "+adtype+"   "+eventName+"   "+paramString);
+             if(listener!=null)
          	 listener.onAdmobEvent(adtype,eventName,paramString);
          }
 		string toString(){
