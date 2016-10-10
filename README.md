@@ -168,8 +168,5 @@ Here is the minimal code needed to show admob banner.
 
 
 ## Change Log
-1.add icon settings to fix https://github.com/unity-plugins/Unity-Admob/issues/5    
-2.add unity ads video sdk for easy to use
+1.update sdk fix https://github.com/unity-plugins/Unity-Admob/issues/19
 
-## Firebase Admob Unity Plugin
-[Firebase Admob Plugin Support Native Ad Based On Firebase](https://github.com/unity-plugins/Firebase-Admob-Unity/)
