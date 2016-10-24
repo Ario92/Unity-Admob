@@ -36,6 +36,7 @@ Ad Types:
 - [x] Banner(All Banner Type and Custom banner sizes)
 - [x] Interstitial (text, picture, video)
 - [x] Rewarded Video 
+- [x] Native Express Banner
 
 
 ## Downloads Admob Unity Plugin
