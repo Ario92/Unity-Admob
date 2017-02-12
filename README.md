@@ -162,6 +162,8 @@ Here is the minimal code needed to show admob banner.
 ```
     AdSupport.framework,EventKit.framework,EventKitUI.framework,CoreTelephony.framework,StoreKit.framework,MessageUI.framework
 ```
+3. Attach admob to Object on scene,init admob before call admob fun
+
 ## Screenshots
 ![ScreenShot](https://raw.githubusercontent.com/unity-plugins/Unity-Admob/master/doc/android_banner.jpg) 
 ![ScreenShot](https://raw.githubusercontent.com/unity-plugins/Unity-Admob/master/doc/android_full.jpg) 
