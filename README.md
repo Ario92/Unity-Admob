@@ -25,8 +25,8 @@ This repository contains the source code for the Google Mobile Ads Unity plugin.
 
 ## Unity Admob Plugin Features
 Platforms supported in one plugin :
-- [x] Android, via SDK v7.8 (part of Google Play service platform)
-- [x] iOS, via SDK v7.6.0
+- [x] Android, via SDK v10.0 (part of Google Play service platform)
+- [x] iOS, via SDK v7.8.0
 - [x] Support all native events
 - [x] AdRequest targeting methods,such as children target,test mode
 - [x] Not need change Android package name
