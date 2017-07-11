@@ -25,8 +25,8 @@ This repository contains the source code for the Google Mobile Ads Unity plugin.
 
 ## Unity Admob Plugin Features
 Platforms supported in one plugin :
-- [x] Android, via SDK v10.2 (part of Google Play service platform)
-- [x] iOS, via SDK v7.18.0
+- [x] Android, via SDK v11.0.2 (part of Google Play service platform)
+- [x] iOS, via SDK v7.21.0
 - [x] Support all native events
 - [x] AdRequest targeting methods,such as children target,test mode
 - [x] Not need change Android package name
@@ -63,6 +63,7 @@ Create A C# script ,drag the script to a object on scene , add the follow code i
 ```
     using admob;
     Admob.Instance().initAdmob("admob banner id", "admob interstitial id");//admob id with format ca-app-pub-279xxxxxxxx/xxxxxxxx
+    //Admob.Instance().initAdmob("ca-app-pub-3940256099942544/2934735716", "ca-app-pub-3940256099942544/4411468910");
 
 ```
 #### 2.Add Admob Banner in Unity App 
@@ -130,7 +131,7 @@ You only need to register for the events you care about.
 
 Here is the minimal  code to create an admob video.
 ```
-    Admob.Instance().loadRewardedVideo("ca-app-pub-312xxxxxxxxxxxx/xxxxxxxx"); 
+    Admob.Instance().loadRewardedVideo("ca-app-pub-3940256099942544/1712485313"); 
 ```
 Simular with interstitial,video need to be explicitly shown at an appropriate
 stopping point in your app, check that the video is ready before
@@ -145,7 +146,7 @@ showing it:
 #### 9.Show Admob Native Express Ad in IOS and Android App 
 Here is the minimal code needed to show admob banner.
 ```
-    Admob.Instance().showNativeBannerRelative(new AdSize(360,100), AdPosition.BOTTOM_CENTER, 0,"ca-app-pub-3940256099942544/2562852117");
+    Admob.Instance().showNativeBannerRelative(new AdSize(360,100), AdPosition.BOTTOM_CENTER, 0,"ca-app-pub-3940256099942544/2934735716");
 
 ```
 
