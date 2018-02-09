@@ -26,7 +26,7 @@ This repository contains the source code for the Google Mobile Ads Unity plugin.
 ## Unity Admob Plugin Features
 Platforms supported in one plugin :
 - [x] Android, via SDK v11.0.4 (part of Google Play service platform)
-- [x] iOS, via SDK v7.26.0
+- [x] iOS, via SDK v7.28.0
 - [x] Support all native events
 - [x] AdRequest targeting methods,such as children target,test mode
 - [x] Not need change Android package name
@@ -36,7 +36,7 @@ Ad Types:
 - [x] Banner(All Banner Type and Custom banner sizes)
 - [x] Interstitial (text, picture, video)
 - [x] Rewarded Video 
-- [x] Native Express Banner
+- [x] Advanced Native Ad
 
 
 
@@ -143,8 +143,10 @@ showing it:
 ```
 
 
-#### 9.Show Admob Native Express Ad in IOS and Android App 
+#### 9.Show Admob Native Advanced Ad in IOS and Android App 
 Here is the minimal code needed to show admob banner.
+This is implemented with Admob Native Advanced as AdMob announced stop the express format ads ,so you must update this sdk if you are using old native banner.
+Just update sdk and replace the admob Express Ad ID with  Advanced Ad ID
 ```
     Admob.Instance().showNativeBannerRelative(new AdSize(360,100), AdPosition.BOTTOM_CENTER, 0,"ca-app-pub-3940256099942544/2934735716");
 
