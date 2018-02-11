@@ -177,5 +177,8 @@ Just update sdk and replace the admob Express Ad ID with  Advanced Ad ID
 
 
 ## Change Log
-1.update sdk fix https://github.com/unity-plugins/Unity-Admob/issues/19
+1.Support iphoneX 
+2.Implement Native Banner with Admob  Advanced Native Ad 
+3.Update sdk
+
 
