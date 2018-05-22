@@ -31,6 +31,7 @@ Platforms supported in one plugin :
 - [x] AdRequest targeting methods,such as children target,test mode
 - [x] Not need change Android package name
 - [x] Very simple API
+- [x] Support  non personalize ad
 
 Ad Types:
 - [x] Banner(All Banner Type and Custom banner sizes)
@@ -105,12 +106,20 @@ In addition to constants on _AdSize_, you can also create a custom size:
 #### 6.Admob test Ads and children app
 If you want to test the ads or the your app with children target,you can set with admob unity plugin easy
 ```
-    Admob.Instance().setTesting(true);
-    Admob.Instance().setForChildren(true);
+    Admob.Instance().setTesting(true);//running test mode
+    Admob.Instance().setForChildren(true);//tag for children market
+    Admob.Instance().setIsDesignedForFamilies(true);// for families settings
     string[] keywords = { "game","crash","male game"};
      Admob.Instance().setKeywords(keywords);
 ```
-#### 7.Ad Events
+#### 7.Admob  non-personalize ad
+If you are looking for a way to be able to switch between personalized and non-personalize ad requests
+according to google https://developers.google.com/admob/ios/eu-consent,you can do as follow
+```
+    Admob.Instance().setNonPersonalized(true);
+    
+```
+#### 8.Ad Events
 Both _Banner_ and _Interstitial_ contain the same ad events that you can
 register for. 
 Here we'll demonstrate setting ad events on a interstitial,and show interstitial when load success:
@@ -127,7 +136,7 @@ Here we'll demonstrate setting ad events on a interstitial,and show interstitial
 ```
 You only need to register for the events you care about.
 
-#### 8.How to integrate Admob Rewarded Video to Unity3d app?
+#### 9.How to integrate Admob Rewarded Video to Unity3d app?
 
 Here is the minimal  code to create an admob video.
 ```
@@ -143,7 +152,7 @@ showing it:
 ```
 
 
-#### 9.Show Admob Native Advanced Ad in IOS and Android App 
+#### 10.Show Admob Native Advanced Ad in IOS and Android App 
 Here is the minimal code needed to show admob banner.
 This is implemented with Admob Native Advanced as AdMob announced stop the express format ads ,so you must update this sdk if you are using old native banner.
 Just update sdk and replace the admob Express Ad ID with  Advanced Ad ID
@@ -180,5 +189,6 @@ Just update sdk and replace the admob Express Ad ID with  Advanced Ad ID
 1.Support iphoneX 
 2.Implement Native Banner with Admob  Advanced Native Ad 
 3.Update sdk
+4.support non personalize ads
 
 
