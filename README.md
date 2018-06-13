@@ -186,9 +186,9 @@ Just update sdk and replace the admob Express Ad ID with  Advanced Ad ID
 
 
 ## Change Log
-1.Support iphoneX 
-2.Implement Native Banner with Admob  Advanced Native Ad 
-3.Update sdk
-4.support non personalize ads
+1.Fix a serious bug. This bug will cause isVideoReady and isInstitialReady return false when that ads  loaded success on android    
+2.Update sdk    
+3.fix crash when video play complete some times    
+4.optimaze code 
 
 
