@@ -185,7 +185,7 @@ Just update sdk and replace the admob Express Ad ID with  Advanced Ad ID
 [Apache 2.0 License](http://www.apache.org/licenses/LICENSE-2.0.html)
 
 
-## Change Log
+## Change Log 
 1.Fix a serious bug. This bug will cause isVideoReady and isInstitialReady return false when that ads  loaded success on android    
 2.Update sdk    
 3.fix crash when video play complete some times    
