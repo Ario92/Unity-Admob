@@ -179,7 +179,7 @@ Just update sdk and replace the admob Express Ad ID with  Advanced Ad ID
 
 ## Screenshots
 ![ScreenShot](https://raw.githubusercontent.com/unity-plugins/Unity-Admob/master/doc/android_banner.jpg) 
-![ScreenShot](https://raw.githubusercontent.com/unity-plugins/Unity-Admob/master/doc/android_full.jpg) 
+![ScreenShot](https://raw.githubusercontent.com/unity-plugins/Unity-Admob/master/doc/reward_video.jpg) 
 
 ## License
 [Apache 2.0 License](http://www.apache.org/licenses/LICENSE-2.0.html)
