@@ -25,8 +25,8 @@ This repository contains the source code for the Google Mobile Ads Unity plugin.
 
 ## Unity Admob Plugin Features
 Platforms supported in one plugin :
-- [x] Android, via SDK v11.0.4 (part of Google Play service platform)
-- [x] iOS, via SDK v7.28.0
+- [x] Android, via SDK v17.0.0 (part of Google Play service platform)
+- [x] iOS, via SDK v7.35.1
 - [x] Support all native events
 - [x] AdRequest targeting methods,such as children target,test mode
 - [x] Not need change Android package name
@@ -49,81 +49,130 @@ or Download all the Unity admob plugin project https://github.com/unity-plugins/
 ## Installation Admob Unity
 1. Open your project in the Unity editor.
 2. Navigate to **Assets -> Import Package -> Custom Package**.
-3. Select the AdmobUnityPlugin.unitypackage file.
-4. Import all of the files for the plugins by selecting **Import**. Make sure
+3. Select the admob_unity_plugin.unitypackage file.
+4. Import all of the files except admobdemo.cs(a example script) by selecting **Import**. Make sure
    to check for any conflicts with files.
 
+You can install by download and copy files in folder **Plugins** to your Unity3d project directly,    
+Unzip GoogleMobileAds.framework.zip to GoogleMobileAds.framework 
+
 ## Unity Plugin Wiki and Documentation
-* [Document](https://github.com/unity-plugins/Unity-Admob/wiki/Admob-Unity-Plugin-Document)
-* [API](https://github.com/unity-plugins/Unity-Admob/wiki/Admob-Unity-Plugin-API)
 * [Tutorial](https://github.com/unity-plugins/Unity-Admob/wiki/How-to-Use-Admob-Plugin-for-Unity)
+* [API](https://github.com/unity-plugins/Unity-Admob/wiki/Admob-Unity-Plugin-API)
+* [Document](https://github.com/unity-plugins/Unity-Admob/wiki/Admob-Unity-Plugin-Document)
 
 ## Quick Start
+###  Edit  AndroidManifest.xml and config Admob APP ID
+This configuration is reqired by admob from version 17.0,**APP will crash** if not config .Add a meta-data tag in application and set value to your admob appid
+```
+ <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="your admob app id"/>
+```
+
+Sample code
+
+
+      <application  android:theme="@style/UnityThemeSelector" 
+       android:icon="@drawable/app_icon" 
+       android:label="@string/app_name" >
+		       <activity
+		    android:name="com.unity3d.player.UnityPlayerActivity"
+		    android:label="@string/app_name" >
+		    <intent-filter>
+		    <action android:name="android.intent.action.MAIN" />
+		    <category android:name="android.intent.category.LAUNCHER" />
+		    </intent-filter>
+		    </activity>
+		    <meta-data
+		    android:name="com.google.android.gms.ads.APPLICATION_ID"
+		    android:value="ca-app-pub-3940256099942544~3347511713"/>
+      </application>
+
+
 #### 1.Init Admob Unity Plugin 
 Create A C# script ,drag the script to a object on scene , add the follow code in the script file
-```
-    using admob;
-    Admob.Instance().initAdmob("admob banner id", "admob interstitial id");//admob id with format ca-app-pub-279xxxxxxxx/xxxxxxxx
-    //Admob.Instance().initAdmob("ca-app-pub-3940256099942544/2934735716", "ca-app-pub-3940256099942544/4411468910");
 
-```
+    using admob;
+    Admob.Instance().initSDK("admob appid", new AdProperties());//admob id with format ca-app-pub-3940256099942544~3347511713
+    //Admob.Instance().initAdmob("ca-app-pub-3940256099942544/2934735716", new AdProperties());
+
+
+You can set admob properties as follow 
+
+        AdProperties adProperties = new AdProperties();
+        adProperties.isTesting = true;
+        adProperties.isForChildDirectedTreatment=true;
+        //adProperties.isUnderAgeOfConsent=true;
+        adProperties.isAppMuted=true;
+        adProperties.nonPersonalizedAdsOnly=true;
+
 #### 2.Add Admob Banner in Unity App 
 Here is the minimal code needed to show admob banner.
-```
-    Admob.Instance().showBannerRelative(AdSize.Banner, AdPosition.BOTTOM_CENTER, 0);
 
-```
+
+    Admob.Instance().showBannerRelative("your admob banner unit id",AdSize.BANNER, AdPosition.BOTTOM_CENTER, 0);
+
+
+or you can create another banner by set banner name 
+
+    Admob.Instance().showBannerAbsolute("ca-app-pub-3940256099942544/6300978111",AdSize.BANNER, 20, 220,"mybanner");
 
 The AdPosition class specifies where to place the banner. AdSize specifies witch size banner to show
 
 #### 3.Remove Banner 
-By default, banners are visible. To temporarily hide a banner, call:
-```
+By default, banners are visible. To hide a banner, call:
+
     Admob.Instance().removeBanner();
-```
 
 #### 4.How to integrate Interstitial into Unity 3d app?
 
 Here is the minimal  code to create an interstitial.
-```
-    Admob.Instance().loadInterstitial(); 
-```
+
+    Admob.Instance().loadInterstitial("Your admob interstitial unit id"); 
+
 Unlike banners, interstitials need to be explicitly shown. At an appropriate
 stopping point in your app, check that the interstitail is ready before
 showing it:
-```
+
     if (Admob.Instance().isInterstitialReady()) {
       Admob.Instance().showInterstitial();
     }
-```
+
 #### 5.Custom Admob Banner Ad Sizes
 In addition to constants on _AdSize_, you can also create a custom size:
-```
+
     //Create a 250x250 banner.
     AdSize adSize = new AdSize(250, 250);
-    Admob.Instance().showBannerAbsolute(adSize,0,30);
-```
-#### 6.Admob test Ads and children app
-If you want to test the ads or the your app with children target,you can set with admob unity plugin easy
-```
-    Admob.Instance().setTesting(true);//running test mode
-    Admob.Instance().setForChildren(true);//tag for children market
-    Admob.Instance().setIsDesignedForFamilies(true);// for families settings
-    string[] keywords = { "game","crash","male game"};
-     Admob.Instance().setKeywords(keywords);
-```
-#### 7.Admob  non-personalize ad
-If you are looking for a way to be able to switch between personalized and non-personalize ad requests
-according to google https://developers.google.com/admob/ios/eu-consent,you can do as follow
-```
-    Admob.Instance().setNonPersonalized(true);
-    
-```
+    Admob.Instance().showBannerAbsolute("Your admob banner id",adSize,0,30,"bannerName");
+
+
+#### 6.How to integrate Admob Rewarded Video to Unity3d app?
+
+Here is the minimal  code to create an admob video.
+
+    Admob.Instance().loadRewardedVideo("ca-app-pub-3940256099942544/1712485313"); 
+
+Simular with interstitial,video need to be explicitly shown at an appropriate
+stopping point in your app, check that the video is ready before
+showing it:
+
+    if (Admob.Instance().isRewardedVideoReady()) {
+      Admob.Instance().showRewardedVideo();
+    }
+
+#### 7.Show Admob Native Advanced Ad in IOS and Android App 
+Here is the minimal code needed to show admob banner.
+This is implemented with Admob Native Ads Advanced (Unified) 
+
+    Admob.Instance().showNativeBannerRelative("Your native banner id",new AdSize(360,100), AdPosition.BOTTOM_CENTER);
+
+
 #### 8.Ad Events
 Both _Banner_ and _Interstitial_ contain the same ad events that you can
 register for. 
 Here we'll demonstrate setting ad events on a interstitial,and show interstitial when load success:
-```
+
     Admob.Instance().interstitialEventHandler += onInterstitialEvent;
     void onInterstitialEvent(string eventName, string msg)
     {
@@ -133,34 +182,8 @@ Here we'll demonstrate setting ad events on a interstitial,and show interstitial
             Admob.Instance().showInterstitial();
         }
     }
-```
+
 You only need to register for the events you care about.
-
-#### 9.How to integrate Admob Rewarded Video to Unity3d app?
-
-Here is the minimal  code to create an admob video.
-```
-    Admob.Instance().loadRewardedVideo("ca-app-pub-3940256099942544/1712485313"); 
-```
-Simular with interstitial,video need to be explicitly shown at an appropriate
-stopping point in your app, check that the video is ready before
-showing it:
-```
-    if (Admob.Instance().isRewardedVideoReady()) {
-      Admob.Instance().showRewardedVideo();
-    }
-```
-
-
-#### 10.Show Admob Native Advanced Ad in IOS and Android App 
-Here is the minimal code needed to show admob banner.
-This is implemented with Admob Native Advanced as AdMob announced stop the express format ads ,so you must update this sdk if you are using old native banner.
-Just update sdk and replace the admob Express Ad ID with  Advanced Ad ID
-```
-    Admob.Instance().showNativeBannerRelative(new AdSize(360,100), AdPosition.BOTTOM_CENTER, 0,"ca-app-pub-3940256099942544/2934735716");
-
-```
-
 
 ## Unity Admob Demo Usage
 1. import AdmobUnityPlugin.unitypackage to your Unity project
@@ -170,25 +193,21 @@ Just update sdk and replace the admob Express Ad ID with  Advanced Ad ID
 5. build and run this in your device
 
 ## Important Tips
-1. Add **GoogleMobileAds.framework**. to Xcode Project
-2. Add the following framework to Xcode project
-```
-    AdSupport.framework,EventKit.framework,EventKitUI.framework,CoreTelephony.framework,StoreKit.framework,MessageUI.framework
-```
-3. Attach admob to Object on scene,init admob before call admob fun
+1. If you not config AndroidManifest.xml,app will crash
+2. Attach admob to Object on scene,init admob before call admob fun
 
 ## Screenshots
-![ScreenShot](https://raw.githubusercontent.com/unity-plugins/Unity-Admob/master/doc/android_banner.jpg) 
-![ScreenShot](https://raw.githubusercontent.com/unity-plugins/Unity-Admob/master/doc/reward_video.jpg) 
+![ScreenShot](https://raw.githubusercontent.com/unity-plugins/Unity-Admob/master/doc/admob_unity_plugin_screen.png) 
 
 ## License
 [Apache 2.0 License](http://www.apache.org/licenses/LICENSE-2.0.html)
 
 
 ## Change Log 
-1.Fix a serious bug. This bug will cause isVideoReady and isInstitialReady return false when that ads  loaded success on android    
-2.Update sdk    
-3.fix crash when video play complete some times    
+This version change a lot    
+1.Update admob sdk,support admob 17    
+2.Add Support for native banner     
+3.Changed some API and const   
 4.optimaze code 
 
 
