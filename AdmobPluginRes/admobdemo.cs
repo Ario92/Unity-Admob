@@ -2,15 +2,20 @@
 using admob;
 public class admobdemo : MonoBehaviour {
 	Admob ad;
-	string appID="";
+	//string appID="";
 	string bannerID="";
 	string interstitialID="";
 	string videoID="";
 	string nativeBannerID = "";
-	
-	void Start () {
+    void Awake()
+    {
+        Debug.Log("Awake is called!----------");
+        
+    }
+
+    void Start () {
         Debug.Log("start unity demo-------------");
-         initAdmob();
+        initAdmob();
 	}
 	
 	void Update () {
@@ -22,27 +27,34 @@ public class admobdemo : MonoBehaviour {
     void initAdmob()
     {
 #if UNITY_IOS
-        		 appID="ca-app-pub-3940256099942544~1458002511";
+        		// appID="ca-app-pub-3940256099942544~1458002511";
 				 bannerID="ca-app-pub-3940256099942544/2934735716";
 				 interstitialID="ca-app-pub-3940256099942544/4411468910";
 				 videoID="ca-app-pub-3940256099942544/1712485313";
 				 nativeBannerID = "ca-app-pub-3940256099942544/3986624511";
 #elif UNITY_ANDROID
-        		 appID="ca-app-pub-3940256099942544~3347511713";
+        		 //appID="ca-app-pub-3940256099942544~3347511713";
 				 bannerID="ca-app-pub-3940256099942544/6300978111";
 				 interstitialID="ca-app-pub-3940256099942544/1033173712";
 				 videoID="ca-app-pub-3940256099942544/5224354917";
 				 nativeBannerID = "ca-app-pub-3940256099942544/2247696110";
 #endif
         AdProperties adProperties = new AdProperties();
-        adProperties.isTesting = true;
-
+/*
+        adProperties.isTesting(true);
+        adProperties.isAppMuted(true);
+        adProperties.isUnderAgeOfConsent(false);
+        adProperties.appVolume(100);
+        adProperties.maxAdContentRating(AdProperties.maxAdContentRating_G);
+string[] keywords = { "key1", "key2", "key3" };
+        adProperties.keyworks(keywords);
+*/
         ad = Admob.Instance();
             ad.bannerEventHandler += onBannerEvent;
             ad.interstitialEventHandler += onInterstitialEvent;
             ad.rewardedVideoEventHandler += onRewardedVideoEvent;
             ad.nativeBannerEventHandler += onNativeBannerEvent;
-            ad.initSDK(appID,adProperties);//reqired,adProperties can been null
+            ad.initSDK(adProperties);//reqired,adProperties can been null
     }
 	void OnGUI(){
         if (GUI.Button(new Rect(120, 0, 100, 60), "showInterstitial"))
@@ -57,7 +69,7 @@ public class admobdemo : MonoBehaviour {
                 ad.loadInterstitial(interstitialID);
             }
         }
-        if (GUI.Button(new Rect(240, 0, 100, 60), "showRewardVideo"))
+        if (GUI.Button(new Rect(0, 0, 100, 60), "showRewardVideo"))
         {
             Debug.Log("touch video button -------------");
             if (ad.isRewardedVideoReady())

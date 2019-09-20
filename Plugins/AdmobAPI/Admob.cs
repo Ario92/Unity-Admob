@@ -33,14 +33,14 @@ namespace admob
 
         }
         [DllImport("__Internal")]
-        private static extern void _kminitSDK(string appid,string adproperties, AdmobAdCallBack callback);
-        public void initSDK(string appid,AdProperties value)
+        private static extern void _kminitSDK(string adproperties, AdmobAdCallBack callback);
+        public void initSDK(AdProperties value)
 		{
 			if(value==null){
                 value = new AdProperties();
 			}
             string properties=value.toString();
-            _kminitSDK(appid,properties,onAdmobEventCallBack);
+            _kminitSDK(properties,onAdmobEventCallBack);
 		}
      
 
@@ -161,67 +161,81 @@ namespace admob
         }
 
 #elif UNITY_ANDROID
-        private AndroidJavaObject jadmob;
+        private AndroidJavaObject jadmob=null;
 		 private void preInitAdmob(){
             if (jadmob == null) {
                 AndroidJavaClass admobUnityPluginClass = new AndroidJavaClass("com.admob.plugin.AdmobUnityPlugin");
                 jadmob = admobUnityPluginClass.CallStatic<AndroidJavaObject>("getInstance");
-                InnerAdmobListener innerlistener = new InnerAdmobListener();
-                innerlistener.admobInstance = this;
-                jadmob.Call("setListener", new object[] {new AdmobListenerProxy(innerlistener) });
+                if(jadmob!= null)
+                {
+                    InnerAdmobListener innerlistener = new InnerAdmobListener();
+                    innerlistener.admobInstance = this;
+                    jadmob.Call("setListener", new object[] { new AdmobListenerProxy(innerlistener) });
+                }
 			}
 		}
 		public void removeAllBanner(){
+            if(jadmob!=null)
 			jadmob.Call("removeAllBanner");
 		}
-	     public void initSDK(string appid,AdProperties value)
+	     public void initSDK(AdProperties value)
 		{
             if(value==null){
                 value = new AdProperties();
 			}
-			jadmob.Call ("initSDK", new object[]{appid,value.toString()});
+            if (jadmob != null)
+                jadmob.Call ("initSDK", new object[]{value.toString()});
 		}
         public void showBannerRelative(string admobBannerID,AdSize size, int position,int marginY=0,string instanceName="defaultBanner")
         {
-            jadmob.Call("showBannerRelative", new object[] {admobBannerID, size.Width,size.Height,position,marginY,instanceName});
+            if (jadmob != null)
+                jadmob.Call("showBannerRelative", new object[] {admobBannerID, size.Width,size.Height,position,marginY,instanceName});
 		}
         public void showBannerAbsolute(string admobBannerID,AdSize size, int x, int y, string instanceName = "defaultBanner")
         {
-            jadmob.Call("showBannerAbsolute", new object[] {admobBannerID, size.Width, size.Height,x,y ,instanceName});
+            if (jadmob != null)
+                jadmob.Call("showBannerAbsolute", new object[] {admobBannerID, size.Width, size.Height,x,y ,instanceName});
         }
         public void removeBanner(string instanceName = "defaultBanner")
         {
-            jadmob.Call("removeBanner",instanceName);
+            if (jadmob != null)
+                jadmob.Call("removeBanner",instanceName);
         }
 
 
         public void loadInterstitial(string interstitialID)
         {
-            jadmob.Call("loadInterstitial",interstitialID);
+            if (jadmob != null)
+                jadmob.Call("loadInterstitial",interstitialID);
         }
         public bool isInterstitialReady()
         {
-            bool isReady = jadmob.Call<bool>("isInterstitialReady");
+            if (jadmob == null) return false;
+                bool isReady = jadmob.Call<bool>("isInterstitialReady");
             return isReady;
         }
         public void showInterstitial()
         {
-            jadmob.Call("showInterstitial");
+            if (jadmob != null)
+                jadmob.Call("showInterstitial");
         }
 
 
         public void loadRewardedVideo(string rewardedVideoID)
         {
-            jadmob.Call("loadRewardedVideo", new object[] { rewardedVideoID });
+            if (jadmob != null)
+                jadmob.Call("loadRewardedVideo", new object[] { rewardedVideoID });
         }
         public bool isRewardedVideoReady()
         {
-            bool isReady = jadmob.Call<bool>("isRewardedVideoReady");
+            if (jadmob == null) return false;
+                bool isReady = jadmob.Call<bool>("isRewardedVideoReady");
             return isReady;
         }
         public void showRewardedVideo()
         {
-            jadmob.Call("showRewardedVideo");
+            if (jadmob != null)
+                jadmob.Call("showRewardedVideo");
         }
         /*
         public void setAdProperties(AdProperties value) { 
@@ -231,19 +245,23 @@ namespace admob
        
         public void showNativeBannerRelative(string nativeBannerID, AdSize size, int position, int marginY=0,string instanceName = "defaultNativeBanner")
         {
-            jadmob.Call("showNativeBannerRelative", new object[] { nativeBannerID,size.Width, size.Height, position, marginY, instanceName });
+            if (jadmob != null)
+                jadmob.Call("showNativeBannerRelative", new object[] { nativeBannerID,size.Width, size.Height, position, marginY, instanceName });
         }
         public void showNativeBannerAbsolute(string nativeBannerID,AdSize size, int x, int y, string instanceName = "defaultNativeBanner")
         {
-            jadmob.Call("showNativeBannerAbsolute", new object[] {nativeBannerID, size.Width, size.Height, x, y, instanceName });
+            if (jadmob != null)
+                jadmob.Call("showNativeBannerAbsolute", new object[] {nativeBannerID, size.Width, size.Height, x, y, instanceName });
         }
         public void removeNativeBanner(string instanceName = "defaultNativeBanner")
         {
-            jadmob.Call("removeNativeBanner", instanceName);
+            if (jadmob != null)
+                jadmob.Call("removeNativeBanner", instanceName);
         }
         public void reloadNativeBanner(string instanceName = "defaultNativeBanner")
         {
-            jadmob.Call("reloadNativeBanner", instanceName);
+            if (jadmob != null)
+                jadmob.Call("reloadNativeBanner", instanceName);
         }
         class InnerAdmobListener : IAdmobListener
         {
@@ -283,7 +301,7 @@ namespace admob
 
         }
 
-        public void initSDK(string appid,AdProperties adProperties)
+        public void initSDK(AdProperties adProperties)
         {
             Debug.Log("calling init sdk");
             Debug.Log("bannerEventHandler==null ? " + (bannerEventHandler == null));

@@ -25,8 +25,8 @@ This repository contains the source code for the Google Mobile Ads Unity plugin.
 
 ## Unity Admob Plugin Features
 Platforms supported in one plugin :
-- [x] Android, via SDK v17.0.0 (part of Google Play service platform)
-- [x] iOS, via SDK v7.35.1
+- [x] Android, via SDK v18.0.0 (part of Google Play service platform)
+- [x] iOS, via SDK v7.49
 - [x] Support all native events
 - [x] AdRequest targeting methods,such as children target,test mode
 - [x] Not need change Android package name
@@ -54,7 +54,6 @@ or Download all the Unity admob plugin project https://github.com/unity-plugins/
    to check for any conflicts with files.
 
 You can install by download and copy files in folder **Plugins** to your Unity3d project directly,    
-Unzip GoogleMobileAds.framework.zip to GoogleMobileAds.framework 
 
 ## Unity Plugin Wiki and Documentation
 * [Tutorial](https://github.com/unity-plugins/Unity-Admob/wiki/How-to-Use-Admob-Plugin-for-Unity)
@@ -94,18 +93,19 @@ Sample code
 Create A C# script ,drag the script to a object on scene , add the follow code in the script file
 
     using admob;
-    Admob.Instance().initSDK("admob appid", new AdProperties());//admob id with format ca-app-pub-3940256099942544~3347511713
-    //Admob.Instance().initAdmob("ca-app-pub-3940256099942544/2934735716", new AdProperties());
+    Admob.Instance().initSDK(new AdProperties());//admob id configed in meta,not support in code any more
 
 
 You can set admob properties as follow 
 
         AdProperties adProperties = new AdProperties();
-        adProperties.isTesting = true;
-        adProperties.isForChildDirectedTreatment=true;
-        //adProperties.isUnderAgeOfConsent=true;
-        adProperties.isAppMuted=true;
-        adProperties.nonPersonalizedAdsOnly=true;
+        adProperties.isTesting(true);
+        adProperties.isAppMuted(true);
+        adProperties.isUnderAgeOfConsent(false);
+        adProperties.appVolume(100);
+        adProperties.maxAdContentRating(AdProperties.maxAdContentRating_G);
+        string[] keywords = { "key1", "key2", "key3" };
+        adProperties.keyworks(keywords);
 
 #### 2.Add Admob Banner in Unity App 
 Here is the minimal code needed to show admob banner.
@@ -191,10 +191,17 @@ You only need to register for the events you care about.
 3. attach admobdemo.cs to the main camera
 4. edit  admob id  in admobdemo.cs
 5. build and run this in your device
+6. add -ObjC flag in xcode Other Linker Flags
+7  add     meta app key in Xcode Info.plist
+
+    <key>GADApplicationIdentifier</key>	<string>ca-app-pub-xxxxxxxxxxxxxxxxxx~xxxxxxxxxx</string>    
+
 
 ## Important Tips
 1. If you not config AndroidManifest.xml,app will crash
-2. Attach admob to Object on scene,init admob before call admob fun
+2. If you not add -ObjC flag App will crash
+3. If you not add GADApplicationIdentifier in Info.plist ,App will crash
+4. Attach admob to Object on scene,init admob before call admob fun
 
 ## Screenshots
 ![ScreenShot](https://raw.githubusercontent.com/unity-plugins/Unity-Admob/master/doc/admob_unity_plugin_screen.png) 
@@ -205,9 +212,9 @@ You only need to register for the events you care about.
 
 ## Change Log 
 This version change a lot    
-1.Update admob sdk,support admob 17    
+1.Update admob sdk,support admob 18    
 2.Add Support for native banner     
-3.Changed some API and const   
-4.optimaze code 
+3.Changed Init API and properties api    
+4.optimaze code  and fix some bug    
 
 

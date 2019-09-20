@@ -9,9 +9,7 @@ namespace admob
         public static readonly string adViewWillDismissScreen = "adViewWillDismissScreen";
         public static readonly string onAdClosed = "onAdClosed";
         public static readonly string onAdLeftApplication = "onAdLeftApplication";
-        public static readonly string onRewardedVideoStarted = "onRewardedVideoStarted";
-        public static readonly string onRewardedVideoCompleted = "onRewardedVideoCompleted";
-        public static readonly string onRewarded = "onRewarded";
+
         public static readonly string onAdClicked = "onAdClicked";
         public static readonly string onAdImpression = "onAdImpression";
         
@@ -23,5 +21,10 @@ namespace admob
         
         public static readonly string onVideoStart = "onVideoStart";
         public static readonly string onNativeAdLoaded = "onNativeAdLoaded";
+
+        public static readonly string onRewardedVideoStarted = "onRewardedVideoStarted";
+        public static readonly string onRewardedVideoCompleted = "onRewardedVideoCompleted";
+        public static readonly string onRewarded = "onRewarded";
+        public static readonly string onRewardedAdFailToPresent = "didFailToPresent";
     }
 }
