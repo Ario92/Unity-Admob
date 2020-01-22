@@ -25,8 +25,8 @@ This repository contains the source code for the Google Mobile Ads Unity plugin.
 
 ## Unity Admob Plugin Features
 Platforms supported in one plugin :
-- [x] Android, via SDK v18.0.0 (part of Google Play service platform)
-- [x] iOS, via SDK v7.49
+- [x] Android, via SDK v18.3.0 (part of Google Play service platform)
+- [x] iOS, via SDK v7.53
 - [x] Support all native events
 - [x] AdRequest targeting methods,such as children target,test mode
 - [x] Not need change Android package name
@@ -66,7 +66,7 @@ This configuration is reqired by admob from version 17.0,**APP will crash** if n
 ```
  <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="your admob app id"/>
+            android:value="ca-app-pub-xxxxxxxxxxxxxxxxxx~xxxxxxxxxxxx"/>
 ```
 
 Sample code
@@ -88,6 +88,13 @@ Sample code
 		    android:value="ca-app-pub-3940256099942544~3347511713"/>
       </application>
 
+Edit Info.plist ,add appid
+
+    <key>GADApplicationIdentifier</key>
+    <string>ca-app-pub-xxxxxxxxxxxxxxxxxxxxxx~xxxxxxxxxxxxxx</string>
+    
+Config  exported Xcode project ,Build Settings->Other Linker Flags  ,add flag -ObjC
+![ScreenShot](https://raw.githubusercontent.com/unity-plugins/Unity-Admob/master/doc/objc_linker_flag.png) 
 
 #### 1.Init Admob Unity Plugin 
 Create A C# script ,drag the script to a object on scene , add the follow code in the script file
@@ -96,10 +103,10 @@ Create A C# script ,drag the script to a object on scene , add the follow code i
     Admob.Instance().initSDK(new AdProperties());//admob id configed in meta,not support in code any more
 
 
-You can set admob properties as follow 
+You can set admob properties as follow ,you need set properties you want to set 
 
         AdProperties adProperties = new AdProperties();
-        adProperties.isTesting(true);
+        adProperties.isTesting(true);//true for test ads
         adProperties.isAppMuted(true);
         adProperties.isUnderAgeOfConsent(false);
         adProperties.appVolume(100);
@@ -194,7 +201,8 @@ You only need to register for the events you care about.
 6. add -ObjC flag in xcode Other Linker Flags
 7  add     meta app key in Xcode Info.plist
 
-    <key>GADApplicationIdentifier</key>	<string>ca-app-pub-xxxxxxxxxxxxxxxxxx~xxxxxxxxxx</string>    
+    <key>GADApplicationIdentifier</key>	
+    <string>ca-app-pub-xxxxxxxxxxxxxxxxxx~xxxxxxxxxx</string>    
 
 
 ## Important Tips
@@ -211,10 +219,6 @@ You only need to register for the events you care about.
 
 
 ## Change Log 
-This version change a lot    
-1.Update admob sdk,support admob 18    
-2.Add Support for native banner     
-3.Changed Init API and properties api    
-4.optimaze code  and fix some bug    
+1.Update admob sdk,support admob 18.3   
 
 

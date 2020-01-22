@@ -10,12 +10,12 @@ public class admobdemo : MonoBehaviour {
     void Awake()
     {
         Debug.Log("Awake is called!----------");
-        
+        initAdmob();
     }
 
     void Start () {
         Debug.Log("start unity demo-------------");
-        initAdmob();
+        
 	}
 	
 	void Update () {
@@ -40,15 +40,14 @@ public class admobdemo : MonoBehaviour {
 				 nativeBannerID = "ca-app-pub-3940256099942544/2247696110";
 #endif
         AdProperties adProperties = new AdProperties();
-/*
-        adProperties.isTesting(true);
+        adProperties.isTesting(false);
         adProperties.isAppMuted(true);
         adProperties.isUnderAgeOfConsent(false);
         adProperties.appVolume(100);
         adProperties.maxAdContentRating(AdProperties.maxAdContentRating_G);
-string[] keywords = { "key1", "key2", "key3" };
+        string[] keywords = { "diagram", "league", "brambling" };
         adProperties.keyworks(keywords);
-*/
+
         ad = Admob.Instance();
             ad.bannerEventHandler += onBannerEvent;
             ad.interstitialEventHandler += onInterstitialEvent;
